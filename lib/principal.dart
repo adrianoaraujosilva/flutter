@@ -6,12 +6,6 @@ class PrincipalWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("Flutter Demo Home Page"),
-          backgroundColor: Colors.purple,
-          foregroundColor: Colors.white,
-        ),
-        body: const ListLanguagesState());
+    return const ListLanguagesState();
   }
 }

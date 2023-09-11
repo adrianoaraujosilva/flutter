@@ -9,14 +9,13 @@ class ListLanguagesState extends StatefulWidget {
 }
 
 class _ListLanguagesStateState extends State<ListLanguagesState> {
-  List<Language> languages = [
-    Language("Android Nativo", "Linguagens C, Java e Kotlin", "1"),
-    Language("IOS Nativo", "Linguagens Objective-C e Swift", "2"),
-    Language("Flutter", "Linguagens Objective-C e Swift", "2"),
-    Language("React Native", "Linguagens Objective-C e Swift", "2"),
-    Language("PWA", "Linguagens Objective-C e Swift", "2"),
-    Language("Ionic", "Linguagens Objective-C e Swift", "2"),
-  ];
+  List<Language> languages = [];
+  // Language("Android Nativo", "Linguagens C, Java e Kotlin", "1"),
+  // Language("IOS Nativo", "Linguagens Objective-C e Swift", "2"),
+  // Language("Flutter", "Linguagens Objective-C e Swift", "2"),
+  // Language("React Native", "Linguagens Objective-C e Swift", "2"),
+  // Language("PWA", "Linguagens Objective-C e Swift", "2"),
+  // Language("Ionic", "Linguagens Objective-C e Swift", "2"),
 
   List<ChoiceChip> _buildChips() {
     return languages
@@ -46,21 +45,36 @@ class _ListLanguagesStateState extends State<ListLanguagesState> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
-          child: Wrap(
-            spacing: 10,
-            children: _buildChips(),
-          ),
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Flutter Demo Home Page"),
+          backgroundColor: Colors.purple,
+          foregroundColor: Colors.white,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Future future = Navigator.pushNamed(context, "/add");
+                  future.then(
+                      (language) => {setState(() => languages.add(language))});
+                },
+                icon: const Icon(Icons.add))
+          ],
         ),
-        Expanded(
-            child: ListView(
-          padding: const EdgeInsets.all(10),
-          shrinkWrap: true,
-          children: _buildCards(),
-        ))
-      ],
-    );
+        body: Column(
+          children: [
+            Center(
+              child: Wrap(
+                spacing: 10,
+                children: _buildChips(),
+              ),
+            ),
+            Expanded(
+                child: ListView(
+              padding: const EdgeInsets.all(10),
+              shrinkWrap: true,
+              children: _buildCards(),
+            ))
+          ],
+        ));
   }
 }

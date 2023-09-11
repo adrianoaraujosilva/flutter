@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/form.dart';
 import 'package:my_app/principal.dart';
 
 void main() {
@@ -16,6 +17,10 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const PrincipalWidget());
+        routes: {
+          "/": (context) => const PrincipalWidget(),
+          "/add": (context) => FormWidget(),
+        },
+        initialRoute: "/");
   }
 }
